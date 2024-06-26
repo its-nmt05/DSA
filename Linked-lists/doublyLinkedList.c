@@ -16,6 +16,35 @@ void traverse(struct Node* head) {
     }
 }
 
+struct Node* insertAtIndex(struct Node* head, int index, int data) {
+    // reserve space for new Node in heap and set the data
+    struct Node* ptr = (struct Node*)malloc(sizeof(struct Node));
+    ptr->data = data;
+
+    struct Node* p = head;
+    struct Node* q = head->next;
+
+    int i = 0;
+    while(i != index - 1) {
+        p = p->next;
+        q = q->next;
+        i++;
+    }
+    /*
+    when we reach here, p points to node before
+    */
+
+   p->next = ptr;
+   if (q != NULL) {
+    q->prev = ptr;
+   }
+   
+   ptr->prev = p;
+   ptr->next = q;
+
+   return head;
+}
+
 struct Node* deleteAtIndex(struct Node* head, int index) {
     struct Node* p = head;
     struct Node* q = p->next;
@@ -88,7 +117,8 @@ int main() {
 
     // traverse(head);
     // head = reverse(head);
-    head = deleteAtIndex(head, 3);
+    // head = deleteAtIndex(head, 3);
+    head = insertAtIndex(head, 4, 84);
     traverse(head);
     
     return 0;
