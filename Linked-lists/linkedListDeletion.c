@@ -87,7 +87,7 @@ int main()
     third = (struct Node*)malloc(sizeof(struct Node));
     fourth = (struct Node*)malloc(sizeof(struct Node));
 
-    // Link first and second notes
+    // Link first and second nodes
     head->data = 4;
     head->next = second;
 
