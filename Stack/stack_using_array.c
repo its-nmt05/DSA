@@ -25,7 +25,7 @@ int main() {
         the advantage of using a pointer instead is that
         we can directly pass the stack into functions as a reference
     */ 
-    struct stack* s;
+    struct stack* s = (struct stack*)malloc(sizeof(struct stack));
     s->size = 80;
     s->top = -1;
     s->arr = (int *)malloc(s->size * sizeof(int));
