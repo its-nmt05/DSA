@@ -16,6 +16,29 @@ void traverse(struct Node* head) {
     }
 }
 
+struct Node* deleteAtIndex(struct Node* head, int index) {
+    struct Node* p = head;
+    struct Node* q = p->next;
+
+    int i = 0;
+    while(i != index - 1) {
+        p = p->next;
+        q = q->next;
+        i++;
+    }
+    /*
+    when we reach here, p points to the node just before the one we need to delete, 
+    and q points to the node we need to delete.
+    */
+    p->next = q->next;  // p->next must point to the node after q
+    
+    if (q->next != NULL) {
+        q->next->prev = p;  // the node after q must have its prev as p 
+    }
+    free(q);
+    return head;
+}
+
 // reversing the doubly linked list 
 struct Node* reverse(struct Node* head) {
     struct Node* p = head;
@@ -64,7 +87,8 @@ int main() {
     fourth->next = NULL;
 
     // traverse(head);
-    head = reverse(head);
+    // head = reverse(head);
+    head = deleteAtIndex(head, 3);
     traverse(head);
     
     return 0;
