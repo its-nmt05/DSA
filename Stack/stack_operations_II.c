@@ -63,6 +63,28 @@ int peek(struct Node* top, int pos) {
     }
 }
 
+int stackTop(struct Node* top) {
+    if (isEmpty(top)) {
+        printf("The stack is empty\n");
+        return - 1;
+    } else {
+        return top->data;
+    }
+}
+
+int stackBottom(struct Node* top) {
+    if (isEmpty(top)) {
+        printf("The stack is empty\n");
+        return - 1;
+    } else {
+        struct Node* n = top;
+        while(n->next != NULL) {
+            n = n->next;
+        }
+        return n->data;
+    }
+}
+
 int main() {
     struct Node* top = NULL;
 
@@ -73,9 +95,12 @@ int main() {
     // traverse(top);
 
     // printing the values in the stack
-    for (int i = 1; i <= 3; i ++) {
-        printf("The value at position %d is: %d\n", i, peek(top, i));
-    }
+    // for (int i = 1; i <= 3; i ++) {
+    //     printf("The value at position %d is: %d\n", i, peek(top, i));
+    // }
+
+    printf("The top most element of the stack is: %d\n", stackTop(top));
+    printf("The bottom most element of the stack is: %d\n", stackBottom(top));
 
     return 0;
 }
