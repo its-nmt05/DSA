@@ -58,7 +58,7 @@ int main() {
     push(s, 23);
     push(s, 52);    // ---> Pushed 5 values to the stack
 
-    // 
+    // Printing values from the stack
     for (int i = 1; i <= s->top + 1; i++) {
         printf("The element at position %d is %d\n", i, peek(s, i));
     }
